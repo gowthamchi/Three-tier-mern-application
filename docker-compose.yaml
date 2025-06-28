@@ -8,6 +8,10 @@ services:
     ports:
       - "27017:27017"
     restart: always
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - mern-network
 
   node:
     container_name: node
@@ -15,11 +19,13 @@ services:
       context: .
     ports:
       - "8080:8080"
+    restart: always
     env_file:
       - .env
-    restart: always
     depends_on:
       - mongo
+    networks:
+      - mern-network
 
   react:
     container_name: react
@@ -30,4 +36,12 @@ services:
     restart: always
     depends_on:
       - node
+    networks:
+      - mern-network
 
+volumes:
+  mongo-data:
+
+networks:
+  mern-network:
+    driver: bridge
