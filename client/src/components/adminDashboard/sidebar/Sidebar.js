@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { logout } from "../../../redux/actions/authAction";
 import "./Sidebar.css";
@@ -8,11 +8,9 @@ import AdminManagement from "../adminManagement/AdminManagement";
 import Spam from "../spamManagement/Spam";
 import UsersManagement from "../usersManagement/UsersManagement";
 
-
 const Sidebar = () => {
   const dispatch = useDispatch();
-    const [adminMenu, setAdminMenu] = useState(1);
-
+  const [adminMenu, setAdminMenu] = useState(1);
 
   return (
     <>
@@ -35,7 +33,7 @@ const Sidebar = () => {
             onClick={() => setAdminMenu(1)}
           >
             <i className="fa fa-th"></i>
-            <a href="#">Dashboard</a>
+            <span>Dashboard</span>
           </div>
           <h2>ADMIN CONTROL</h2>
           <div
@@ -43,29 +41,29 @@ const Sidebar = () => {
             onClick={() => setAdminMenu(2)}
           >
             <i className="fa fa-lock" aria-hidden="true"></i>
-            <a href="#">Admin Management</a>
+            <span>Admin Management</span>
           </div>
           <div
             className={`sidebar__link ${adminMenu === 3 && "active_menu_link"}`}
             onClick={() => setAdminMenu(3)}
           >
             <i className="fa fa-ban"></i>
-            <a href="#">Spams Management</a>
+            <span>Spams Management</span>
           </div>
           <div
             className={`sidebar__link ${adminMenu === 4 && "active_menu_link"}`}
             onClick={() => setAdminMenu(4)}
           >
             <i className="fa fa-wrench"></i>
-            <a href="#">Users Management</a>
+            <span>Users Management</span>
           </div>
           <div className="sidebar__link">
             <i className="fa fa-archive"></i>
-            <a href="#">xyz</a>
+            <span>xyz</span>
           </div>
           <div className="sidebar__link">
             <i className="fa fa-handshake-o"></i>
-            <a href="#">xyz</a>
+            <span>xyz</span>
           </div>
 
           <div className="sidebar__logout">
@@ -81,3 +79,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+

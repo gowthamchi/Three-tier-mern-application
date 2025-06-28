@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+
+  mongo:
+    container_name: mongo-db
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    restart: always
+
+  node:
+    container_name: node
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    restart: always
+    depends_on:
+      - mongo
+
+  react:
+    container_name: react
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - node
+

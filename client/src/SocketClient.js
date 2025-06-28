@@ -6,18 +6,18 @@ import { GLOBALTYPES } from "./redux/actions/globalTypes";
 import { NOTIFY_TYPES } from "./redux/actions/notifyAction";
 import { MESSAGE_TYPES } from "./redux/actions/messageAction";
 
-import audioTone from './audio/pristine-609.mp3' 
+import audioTone from './audio/pristine-609.mp3';
 
 const spawnNotification = (body, icon, url, title) => {
   let options = {
     body, icon
-  }
+  };
   let n = new Notification(title, options);
-  n.onclick =  e => {
+  n.onclick = e => {
     e.preventDefault();
     window.open(url, '_blank');
-  }
-}
+  };
+};
 
 const SocketClient = () => {
   const { auth, socket, notify } = useSelector((state) => state);
@@ -25,7 +25,7 @@ const SocketClient = () => {
 
   const audioRef = useRef();
 
-  //!connection
+  // Join user/admin room
   useEffect(() => {
     if (auth.user.role === "user") {
       socket.emit("joinUser", auth.user._id);
@@ -34,6 +34,7 @@ const SocketClient = () => {
     }
   }, [socket, auth.user.role, auth.user._id]);
 
+  // Get total active users
   useEffect(() => {
     socket.on("getActiveUsersToClient", (totalActiveUsers) => {
       dispatch({
@@ -44,7 +45,7 @@ const SocketClient = () => {
     return () => socket.off("getActiveUsersToClient");
   }, [socket, dispatch]);
 
-  //!like Post
+  // Like post
   useEffect(() => {
     socket.on("likeToClient", (newPost) => {
       dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
@@ -52,7 +53,7 @@ const SocketClient = () => {
     return () => socket.off("likeToClient");
   }, [socket, dispatch]);
 
-  //!Unlike Post
+  // Unlike post
   useEffect(() => {
     socket.on("unLikeToClient", (newPost) => {
       dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
@@ -60,7 +61,7 @@ const SocketClient = () => {
     return () => socket.off("unLikeToClient");
   }, [socket, dispatch]);
 
-  //!Comments
+  // Create comment
   useEffect(() => {
     socket.on("createCommentToClient", (newPost) => {
       dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
@@ -68,6 +69,7 @@ const SocketClient = () => {
     return () => socket.off("createCommentToClient");
   }, [socket, dispatch]);
 
+  // Delete comment
   useEffect(() => {
     socket.on("deleteCommentToClient", (newPost) => {
       dispatch({ type: POST_TYPES.UPDATE_POST, payload: newPost });
@@ -75,7 +77,7 @@ const SocketClient = () => {
     return () => socket.off("deleteCommentToClient");
   }, [socket, dispatch]);
 
-  //!Follow
+  // Follow
   useEffect(() => {
     socket.on("followToClient", (newUser) => {
       dispatch({ type: GLOBALTYPES.AUTH, payload: { ...auth, user: newUser } });
@@ -83,6 +85,7 @@ const SocketClient = () => {
     return () => socket.off("followToClient");
   }, [socket, dispatch, auth]);
 
+  // Unfollow
   useEffect(() => {
     socket.on("unFollowToClient", (newUser) => {
       dispatch({
@@ -93,7 +96,7 @@ const SocketClient = () => {
     return () => socket.off("unFollowToClient");
   }, [socket, dispatch, auth]);
 
-  //!Notifications
+  // Create notification
   useEffect(() => {
     socket.on("createNotifyToClient", (msg) => {
       dispatch({ type: NOTIFY_TYPES.CREATE_NOTIFY, payload: msg });
@@ -111,6 +114,7 @@ const SocketClient = () => {
     return () => socket.off("createNotifyToClient");
   }, [socket, dispatch, notify.sound]);
 
+  // Remove notification
   useEffect(() => {
     socket.on("removeNotifyToClient", (msg) => {
       dispatch({ type: NOTIFY_TYPES.REMOVE_NOTIFY, payload: msg });
@@ -118,14 +122,13 @@ const SocketClient = () => {
     return () => socket.off("removeNotifyToClient");
   }, [socket, dispatch]);
 
-  //!Messages
+  // Add message
   useEffect(() => {
     socket.on("addMessageToClient", (msg) => {
       dispatch({ type: MESSAGE_TYPES.ADD_MESSAGE, payload: msg });
-
     });
     return () => socket.off("addMessageToClient");
-  }, []);
+  }, [socket, dispatch]); // ✅ Fixed dependency warning
 
   return (
     <>
@@ -137,3 +140,4 @@ const SocketClient = () => {
 };
 
 export default SocketClient;
+
