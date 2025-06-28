@@ -1,85 +1,67 @@
-Don't forget to star the repo.
-Demo website : https://mern-social-media-sdp.herokuapp.com/
-# mern-social-media-complete-project
-A MERN stack based project on social media application. It is completely working project. Its' completely responsive application.
-MongoDB Express React Redux NodeJs are user in this project.
+Three-Tier MERN Social Media Application
+🚀 Deployed and Containerized by: Goutham Reddy (DevOps Engineer)
 
-# Featurs included in this project:
+🔧 About This Project
+This is a production-grade social media application built with the MERN stack (MongoDB, Express, React, Node.js), and deployed using Docker on an AWS EC2 instance. The application includes authentication, post management, notifications, admin control, and more.
 
-**user features:**
- - register and login users. 
- - post images can be uploaded using camera or file system.
- - pagination on every pages.
- - Dark mode.
- - copy link of post.
- - report post for spam.
- - search other users by username.
- - user suggestions menu. 
- - save any post to collection.
- - saved posts page.
- - delete posts and comments.
- - admin panel is included.
- - Explore page to view other posts by random users.
- - notifications page.
- - profile page.
- - edit profile page user data.
- - password is stored in database in encrypted format with salt.
- - create and edit posts.
- - like ,comment, share and edit posts.
- - posts include text(caption) and image(s).
- - comment on posts.
- - reply comments.
- - like commets.
- - clear notification option.
- - profile page shows user details and posts with following and followers menu.
+I handled the complete deployment lifecycle, including Dockerizing the application, setting up environment variables, configuring ports, and running containers on a live EC2 server.
 
+🛠️ DevOps Responsibilities
+As a DevOps Engineer, I:
 
+🔹 Dockerized both the frontend and backend applications
 
-   **Admin features:**
-   
+🔹 Created and configured Dockerfile and docker-compose.yml
 
- - admin panel shows total number of post ,users,reported posts etc.
- - admin can create or assign other admin accounts.
- - admin can see posts reported by more than specified number of users.
- - admin can delete those reported posts.
+🔹 Opened required EC2 security group ports (3000, 8080)
 
+🔹 Used MongoDB Atlas for cloud database integration
 
-**What you need to run this application:**
+🔹 Configured environment variables for local and production use
 
- - Node 
- - MongoDB or Mongo Atlas
- - Cloudinary account
- - NPM
+🔹 Debugged networking, proxy, and CORS issues
 
-**How to run this application**
-1.  Make sure MongoDB is running on your system or online.
-2. include MongoDB database link in .env file.
-3. Add cloudinary data in /client/src/utils/imageUpload.js file.
-4. Clone this repository
-5. Open command line in the cloned folder,
-    - To install dependencies for backend, run  `npm install` in main folder.
-    - To run backend type command `node server` in main folder.
-    - To install dependencies for frontend , run  `npm install` in `/client` folder.
-    - To run frontend type command `npm start` in `/client` folder.
-6.  Open  [localhost:3000](http://localhost:3000/)  in the browser.
- **And application will be up and running.**
-**Here are some images of application:**
-![login page](https://user-images.githubusercontent.com/72184791/114161303-877f6b80-9945-11eb-89a7-f05b560bb5e4.JPG)
+🔹 Managed Git version control and pushed final setup to GitHub
 
-![admin panel](https://user-images.githubusercontent.com/72184791/114161299-877f6b80-9945-11eb-9791-cab82f92bd7e.JPG)
+Key Features
+👤 User Features
+User registration and login
 
-![profile page](https://user-images.githubusercontent.com/72184791/114161324-8b12f280-9945-11eb-96a2-0707ee234c8a.JPG)
+Upload posts via file system or camera
 
-![home page](https://user-images.githubusercontent.com/72184791/114161305-88180200-9945-11eb-9856-a4b33b8e9def.JPG)
-![new post](https://user-images.githubusercontent.com/72184791/114161309-89492f00-9945-11eb-888f-3ff263cfb909.JPG)
+Like, comment, edit, delete, and share posts
 
-![dark mode](https://user-images.githubusercontent.com/72184791/114161287-851d1180-9945-11eb-8a0e-1a4c56132de0.JPG)
+Follow/unfollow users, save posts, and manage collections
 
-![search users](https://user-images.githubusercontent.com/72184791/114161296-86e6d500-9945-11eb-85cb-eb7c84d4abda.JPG)
+Notifications and post reporting
 
-![posts menu](https://user-images.githubusercontent.com/72184791/114161315-89e1c580-9945-11eb-8f9f-4156d1184567.JPG)
+Dark mode toggle
 
-![explore page](https://user-images.githubusercontent.com/72184791/114161321-8a7a5c00-9945-11eb-8c67-bf42a8f30fcd.JPG)
+Responsive design for all devices
 
+🔐 Admin Features
+Admin dashboard with user/post stats
 
+Create new admins
 
+View and manage reported posts
+
+🚀 Deployment Guide
+Clone the Repository
+
+git clone https://github.com/gowthamchi/Three-tier-mern-application.git
+cd Three-tier-mern-application
+Add Your Environment Variables
+
+Create .env files in root and client folders
+
+Refer to .env.example for the required keys
+
+Run with Docker Compose
+
+docker-compose up --build
+Access
+
+Frontend: http://<your-ec2-public-ip>:3000
+
+Backend (API): http://<your-ec2-public-ip>:8080
