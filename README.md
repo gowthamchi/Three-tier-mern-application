@@ -1,67 +1,75 @@
-Three-Tier MERN Social Media Application
-🚀 Deployed and Containerized by: Goutham Reddy (DevOps Engineer)
+# ⭐ Three-Tier MERN Social Media Application
 
-🔧 About This Project
-This is a production-grade social media application built with the MERN stack (MongoDB, Express, React, Node.js), and deployed using Docker on an AWS EC2 instance. The application includes authentication, post management, notifications, admin control, and more.
+> 🧑‍💻 **Developed by:** [@raj074](https://github.com/raj074)  
+> 🚀 **Deployed and Containerized by:** [Goutham Reddy (DevOps Engineer)](https://github.com/gowthamchi)
 
-I handled the complete deployment lifecycle, including Dockerizing the application, setting up environment variables, configuring ports, and running containers on a live EC2 server.
+---
 
-🛠️ DevOps Responsibilities
-As a DevOps Engineer, I:
+## 🔧 About This Project
 
-🔹 Dockerized both the frontend and backend applications
+This is a **production-grade social media application** built using the **MERN stack** (MongoDB, Express, React, Node.js) and deployed using **Docker** on an **AWS EC2 instance**.
 
-🔹 Created and configured Dockerfile and docker-compose.yml
+The application supports user authentication, post creation, admin management, notifications, dark mode, and more. As a **DevOps Engineer**, I focused on containerizing, configuring, and deploying the system from end to end.
 
-🔹 Opened required EC2 security group ports (3000, 8080)
+---
 
-🔹 Used MongoDB Atlas for cloud database integration
+## 🛠️ DevOps Responsibilities
 
-🔹 Configured environment variables for local and production use
+As part of my DevOps ownership, I handled:
 
-🔹 Debugged networking, proxy, and CORS issues
+- ✅ Dockerizing both frontend and backend applications  
+- ✅ Writing and configuring `Dockerfile` and `docker-compose.yml`  
+- ✅ Exposing necessary EC2 security group ports (3000, 8080)  
+- ✅ Connecting backend to **MongoDB Atlas** (cloud DB)  
+- ✅ Setting up `.env` files for both local and production environments  
+- ✅ Debugging cross-container networking, proxy, and CORS issues  
+- ✅ Managing Git versioning and pushing to GitHub  
 
-🔹 Managed Git version control and pushed final setup to GitHub
+---
 
-Key Features
-👤 User Features
-User registration and login
+## 👤 Key Features
 
-Upload posts via file system or camera
+### 🧑 User Features
 
-Like, comment, edit, delete, and share posts
+- User registration and login  
+- Upload posts via file system or camera  
+- Like, comment, edit, delete, and share posts  
+- Follow/unfollow users, save posts, and manage collections  
+- Notifications and post reporting  
+- Toggle dark/light mode  
+- Responsive design across all devices  
 
-Follow/unfollow users, save posts, and manage collections
+### 🛡️ Admin Features
 
-Notifications and post reporting
+- Admin dashboard with real-time stats  
+- Ability to create and assign new admins  
+- Review and delete reported posts  
 
-Dark mode toggle
+---
 
-Responsive design for all devices
+ 🚀 Deployment Guide
 
-🔐 Admin Features
-Admin dashboard with user/post stats
+ 1️⃣ Clone the Repository
 
-Create new admins
-
-View and manage reported posts
-
-🚀 Deployment Guide
-Clone the Repository
 
 git clone https://github.com/gowthamchi/Three-tier-mern-application.git
 cd Three-tier-mern-application
-Add Your Environment Variables
 
-Create .env files in root and client folders
+2️⃣ Add Environment Variables
+Create .env files in both root/ and client/ folders.
+Use the provided .env.example as a reference.
 
-Refer to .env.example for the required keys
-
-Run with Docker Compose
-
+3️⃣ Run Using Docker Compose
 docker-compose up --build
-Access
 
+4️⃣ Access the Application
 Frontend: http://<your-ec2-public-ip>:3000
+Backend API: http://<your-ec2-public-ip>:8080
 
-Backend (API): http://<your-ec2-public-ip>:8080
+🙏 Credits
+🧑‍💻 Developed by: @raj074
+This project is based on his excellent open-source MERN social media application.
+
+🛠️ Deployed and Dockerized by: @gowthamchi
+I independently handled Dockerization, DevOps configuration, and cloud deployment.
+
